@@ -2,17 +2,27 @@
 #include <iostream>
 void Map::initMap()
 {
-	this->wallTile.setFillColor(sf::Color::Black);
-	this->wallTile.setSize(sf::Vector2f(100.f, 100.f));
-	this->wallTile.setPosition(sf::Vector2f(0.f, 0.f));
+	
 
-	this->mapScale = 4.f;
+	this->mapScale = 3.f;
 	this->playerSpeed = 5.f;
 
-    this->map.loadFromFile("Images/background.jpg");
-    this->mapSprite.setTexture(map);
-    this->mapSprite.setPosition(sf::Vector2f(0.f, 0.f));
-	this->mapSprite.setScale(sf::Vector2f(this->mapScale , this->mapScale));
+    this->grass.loadFromFile("Images/grassTile.png");
+    this->grassTile.setTexture(grass);
+    this->grassTile.setPosition(sf::Vector2f(0.f, 0.f));
+	this->grassTile.setScale(sf::Vector2f(this->mapScale , this->mapScale));
+
+	this->grassTree.loadFromFile("Images/grassTree.png");
+	this->grassTreeTile.setTexture(grassTree);
+	this->grassTreeTile.setPosition(sf::Vector2f(0.f, 0.f));
+	this->grassTreeTile.setScale(sf::Vector2f(this->mapScale, this->mapScale));
+
+	this->wallTile.setFillColor(sf::Color::White);
+	this->wallTile.setSize(sf::Vector2f(160.f, 80.f));
+	this->wallTile.setPosition(sf::Vector2f(0.f, 0.f));
+	this->wallTile.setOutlineColor(sf::Color::Black);
+	this->wallTile.setOutlineThickness(3);
+
 	this->file.open("Map/map.txt");
 	for (int row = 0; row < 50; row++) {
 		for (int column = 0; column < 50; column++) {
@@ -57,20 +67,38 @@ void Map::mapUpdate(Map &map)
 void Map::mapLoad()
 {
 	for (int row = 0; row < 50; row++) {
-		this->wallTile.setPosition(sf::Vector2f(0.f, row * this->wallTile.getSize().y));
+		this->grassTile.setPosition(sf::Vector2f(row*-90.f, row * 45.f));
+		this->grassTreeTile.setPosition(sf::Vector2f(row * -90.f, row * 45.f));
+
 		for (int column = 0; column < 50; column++) {
 			//std::cout << map.mapArray[row][column] << "";
 			if (mapArray[row][column] == '1')
 			{
-				this->tileVector.push_back(this->wallTile);
-				this->wallTile.move(sf::Vector2f(this->wallTile.getSize().x, 0.f));
+				this->tileVector.push_back(this->grassTile);
+				
+				this->grassTile.move(sf::Vector2f(90.f, 45.f));
+				this->grassTreeTile.move(sf::Vector2f(90.f, 45.f));
 				//this->window->draw(this->map.wallTile);
 
 			}
-			if (mapArray[row][column] == '0')
+			else if (mapArray[row][column] == '2')
 			{
 				//this->tileVector.push_back(this->map.wallTile);
-				this->wallTile.move(sf::Vector2f(this->wallTile.getSize().x, 0.f));
+				this->tileVector.push_back(this->grassTreeTile);
+				this->grassTile.move(sf::Vector2f(90.f, 45.f));
+				this->grassTreeTile.move(sf::Vector2f(90.f, 45.f));
+
+				//this->window->draw(this->map.wallTile);
+
+			}
+			else if (mapArray[row][column] == '0')
+			{
+				this->tileVector.push_back(this->grassTile);
+
+				//this->tileVector.push_back(this->map.wallTile);
+				this->grassTile.move(sf::Vector2f(90.f, 45.f));
+				this->grassTreeTile.move(sf::Vector2f(90.f, 45.f));
+
 				//this->window->draw(this->map.wallTile);
 
 			}
@@ -81,9 +109,40 @@ void Map::mapLoad()
 
 void Map::mapRender(sf::RenderWindow *window, Map &map)
 {
-	for (auto& e : map.tileVector)
+	for (auto&  e : map.tileVector)
 	{
+		//e.setRotation(45.f);
+		//e.setScale(sf::Vector2f(1.f, 1.f));
+		if ( (260 > e.getGlobalBounds().top) & (160 < e.getGlobalBounds().top) & (400 > e.getGlobalBounds().left) & (220 < e.getGlobalBounds().left))
+		{
+
+
+			e.setColor(sf::Color::Red);
+			window->draw(e);
+		}
+
 		window->draw(e);
+/*
+		sf::RectangleShape origin;
+		origin.setPosition(sf::Vector2f(400.f, 300.f));
+		origin.setSize(sf::Vector2f(100.f, 100.f));
+		origin.setFillColor(sf::Color::Red);
+		if (e.getGlobalBounds().intersects(origin.getGlobalBounds()))
+		{
+			e.setColor(sf::Color::Blue);
+			window->draw(e);
+		}
+		window->draw(origin);
+*/
+	//	if ((240 > e.getGlobalBounds().top) &! (400 > e.getGlobalBounds().left))
+	//	{
+	//		e.setColor(sf::Color::Green);
+	//		window->draw(e);
+	//	}
+		
+
+		
+		//std::cout << this->playerData.playerRect.getGlobalBounds().top << "\n";
 	}
 
 }

@@ -44,7 +44,6 @@ void Game::update()
 {
     this->pollEvents();
     //this->player.playerInputUpdate();
-    
     //Includes Player Movement
     this->map.mapUpdate(this->map);
 }

@@ -17,9 +17,11 @@ class Player
 {
 private:
 	sf::Vector2f playerSize;
+	sf::Vector2f playerCollisionSize;
 
 public:
 	sf::RectangleShape playerRect;
+	sf::RectangleShape playerCollisionRect;
 	void initPlayer(float, float);
 	void playerInputUpdate();
 };

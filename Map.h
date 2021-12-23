@@ -28,12 +28,19 @@ private:
 public:
 	//Map Size
 	char mapArray[50][50];
-	std::vector<sf::RectangleShape> tileVector;
+	std::vector<sf::Sprite> tileVector;
 
 	sf::Texture map;
 	sf::Sprite mapSprite;
+	sf::Texture grass;
+	sf::Sprite grassTile;
+	sf::Texture grassTree;
+	sf::Sprite grassTreeTile;
 	sf::RectangleShape wallTile;
+	
 	float playerSpeed;
+	Player playerData;
+
 	std::ifstream file;
 	void initMap();
 	void mapUpdate(Map&);
