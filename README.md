@@ -17,3 +17,13 @@ Instructions:
 -WASD for movement.
 
 -IJKL is used to change the size of the "player".
+
+---------------------------------------------------------------------------------
+
+Install exe instructions. (For users without SFML)
+
+-Download "debug.rar"
+
+-Extract files
+
+-Run "C++ Game.exe"
