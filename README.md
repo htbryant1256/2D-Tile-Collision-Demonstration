@@ -20,7 +20,7 @@ Instructions:
 
 ---------------------------------------------------------------------------------
 
-Install exe instructions. (For users without SFML)
+Install exe instructions. (For users without SFML) (CURRENTLY DLL ERRORS)
 
 -Download "debug.rar"
 
