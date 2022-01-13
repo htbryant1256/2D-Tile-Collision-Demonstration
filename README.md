@@ -20,9 +20,9 @@ Instructions:
 
 ---------------------------------------------------------------------------------
 
-Install exe instructions. (For users without SFML) (CURRENTLY DLL ERRORS)
+Install exe instructions. (For users without SFML)
 
--Download "debug.rar"
+-Download "GAME.rar"
 
 -Extract files
 
