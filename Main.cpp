@@ -1,10 +1,21 @@
 /**
+* 
+* TEST TEST TEST TEST TEST TEST
+* 
+* 
 Main.cpp
 C++ Game
 
 Author: Henry Bryant
+PERFORMANCE:
+
+Change movement to player and sfml views.
 
 CURRENT BUGS:
+
+Work on collision detection, should not be impacted by player movement
+update.
+
 
 COMPLETED : 
     Tile map works, sheers randomly. blocks sheer the same amount as movement variable
@@ -12,6 +23,8 @@ COMPLETED :
                     This can be simplified because during mulitple button inputs,
                     the program will run 2 or more for loops instead of one, this could
                     impact performace when the map is scaled very large
+
+
 
 */
 

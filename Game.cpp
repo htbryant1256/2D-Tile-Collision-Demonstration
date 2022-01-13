@@ -7,6 +7,9 @@ void Game::initVariables()
 	this->window = nullptr;
     this->windowWidth = 800;
     this->windowHeight = 600;
+
+
+    
 }
 
 void Game::initWindow()
@@ -16,6 +19,11 @@ void Game::initWindow()
 
 	this->window = new sf::RenderWindow(this->videoMode, "C++ RPG", sf::Style::Titlebar | sf::Style::Close);
     this->window->setFramerateLimit(60);
+
+    this->view1.setCenter(sf::Vector2f(400.f, 300.f));
+    this->view1.setSize(sf::Vector2f(windowWidth, windowHeight));
+    this->window->setView(view1);
+
 }
 
 //Event polling
@@ -43,9 +51,10 @@ void Game::pollEvents()
 void Game::update()
 {
     this->pollEvents();
-    //this->player.playerInputUpdate();
+    this->player.playerInputUpdate(view1);
+
     //Includes Player Movement
-    this->map.mapUpdate(this->map);
+  //  this->map.mapUpdate(this->map);
 }
 
 //essentially display
@@ -54,14 +63,18 @@ void Game::render()
     //clear window
     this->window->clear(sf::Color::Blue);
     //Draw Map
-    this->map.mapRender(this->window, this->map);
+    this->map.mapRender(this->window, this->map, this->player);
     //this->window->draw(this->map.mapSprite);
     
     //Draw Enemies
     //this->window->draw(this->enemy.enemyRect);
-   
+    view1.setCenter(player.playerRect.getPosition());
+    this->window->setView(view1);
+
     //Draw Player
     this->window->draw(this->player.playerRect);
+
+
 
     //display to window
     this->window->display();

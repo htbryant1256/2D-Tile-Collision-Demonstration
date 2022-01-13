@@ -30,6 +30,7 @@ private:
 	//Private Variables
 	int windowHeight;
 	int windowWidth;
+	sf::View view1;
 
 	//Private functions
 	void initVariables();

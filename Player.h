@@ -16,14 +16,17 @@ Player stands still and the map moves around the player. Therefore playerSpeed i
 class Player
 {
 private:
-	sf::Vector2f playerSize;
 	sf::Vector2f playerCollisionSize;
 
 public:
+	sf::Vector2f playerSize;
+
+	sf::Vector2f playerVelocity;
+	float playerSpeed;
 	sf::RectangleShape playerRect;
 	sf::RectangleShape playerCollisionRect;
 	void initPlayer(float, float);
-	void playerInputUpdate();
+	void playerInputUpdate(sf::View&);
 };
 
 #endif

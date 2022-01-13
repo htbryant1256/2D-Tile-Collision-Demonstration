@@ -29,6 +29,7 @@ public:
 	//Map Size
 	char mapArray[50][50];
 	std::vector<sf::Sprite> tileVector;
+	std::vector<sf::Sprite> tileCollisionVector;
 
 	sf::Texture map;
 	sf::Sprite mapSprite;
@@ -38,14 +39,14 @@ public:
 	sf::Sprite grassTreeTile;
 	sf::RectangleShape wallTile;
 	
-	float playerSpeed;
+	//float playerSpeed;
 	Player playerData;
 
 	std::ifstream file;
 	void initMap();
-	void mapUpdate(Map&);
+	void mapUpdate(sf::RenderWindow*, Map&);
 	void mapLoad();
-	void mapRender(sf::RenderWindow*, Map&);
+	void mapRender(sf::RenderWindow*, Map&, Player&);
 };
 
 #endif
