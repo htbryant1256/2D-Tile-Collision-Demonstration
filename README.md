@@ -20,7 +20,7 @@ Instructions:
 
 ---------------------------------------------------------------------------------
 
-Install exe instructions. (For users without SFML)
+Install exe instructions WINDOWS ONLY. (For users without SFML) (Might not work due to a .dll bug in the system32 file of most computers. Currently working on it.)
 
 -Download "GAME.rar"
 
